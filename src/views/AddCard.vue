@@ -3,13 +3,16 @@
     <section class="card-form">
       <label class="col-2" for="card-number">CARD NUMBER</label>
       <input
+        v-model="formData.cardNumber"
         placeholder="XXXX XXXX XXXX XXXX"
+        maxlength="16"
         class="col-2"
         name="card-number"
         type="text"
       />
       <label class="col-2" for="card-name">CARDHOLDER NAME</label>
       <input
+        v-model="formData.cardName"
         placeholder="Firstname Lastname"
         class="col-2"
         name="card-name"
@@ -18,7 +21,7 @@
 
       <label class="col-1" for="month-dropdown">MONTH</label>
       <label class="col-1" for="year-dropdown">YEAR</label>
-      <select class="col-1" name="month-dropdown">
+      <select v-model="formData.month" class="col-1" name="month-dropdown">
         <option value="01">01</option>
         <option value="02">02</option>
         <option value="03">03</option>
@@ -32,7 +35,7 @@
         <option value="11">11</option>
         <option value="12">12</option>
       </select>
-      <select class="col-1" name="year-dropdown">
+      <select v-model="formData.year" class="col-1" name="year-dropdown">
         <option value="21">21</option>
         <option value="22">22</option>
         <option value="23">23</option>
@@ -40,19 +43,37 @@
         <option value="25">25</option>
       </select>
       <label class="col-2" for="vendor">VENDOR</label>
-      <select class="col-2" name="vendor-dropdown">
+      <select v-model="formData.vendor" class="col-2" name="vendor-dropdown">
         <option value="Bitcoin Inc">Bitcoin Inc</option>
         <option value="Blockchain Inc">Blockchain Inc</option>
         <option value="Evil Corp">Evil Corp</option>
         <option value="Ninja Bank">Ninja Bank</option>
       </select>
     </section>
-    <a href="#" class="btn">Add card</a>
+    <a @click.prevent="addCard" href="#" class="btn">Add card</a>
   </main>
 </template>
 
 <script>
-export default {};
+export default {
+  data: function () {
+    return {
+      formData: {
+        cardNumber: "",
+        cardName: "",
+        month: "",
+        year: "",
+        vendor: "",
+      },
+    };
+  },
+  methods: {
+    addCard() {
+      console.log(this.$root.cards);
+      this.$root.cards.push(this.formData);
+    },
+  },
+};
 </script>
 
 

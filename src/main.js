@@ -5,6 +5,9 @@ import router from './router'
 Vue.config.productionTip = false
 
 new Vue({
+  data: {
+    cards: []
+  },
   router,
   render: h => h(App)
 }).$mount('#app')
