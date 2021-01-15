@@ -1,6 +1,6 @@
 <template>
   <main>
-    <Card v-bind:formData="formData" />
+    <Card v-bind:cardData="formData" />
     <section class="card-form">
       <label class="col-2" for="card-number">CARD NUMBER</label>
       <input
@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     addCard() {
-      console.log(this.$root.cards);
       this.$root.cards.push(this.formData);
     },
   },

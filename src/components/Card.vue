@@ -1,37 +1,61 @@
 <template>
   <article
     v-bind:class="[
-      formData.vendor === 'Ninja Bank'
+      cardData.vendor === 'Ninja Bank'
         ? 'ninja'
-        : formData.vendor === 'Bitcoin Inc'
+        : cardData.vendor === 'Bitcoin Inc'
         ? 'bitcoin'
-        : formData.vendor === 'Blockchain Inc'
+        : cardData.vendor === 'Blockchain Inc'
         ? 'blockchain'
-        : formData.vendor === 'Evil Corp'
+        : cardData.vendor === 'Evil Corp'
         ? 'evil'
         : 'blank',
     ]"
     class="card"
   >
     <header>
-      <img src="../assets/chip-light.svg" alt="Light chip" />
+      <img
+        v-if="cardData.vendor !== 'Bitcoin Inc'"
+        src="../assets/chip-light.svg"
+        alt="Light chip"
+      />
+      <img v-else src="../assets/chip-dark.svg" alt="Dark chip" />
+      <!-- Fungerade inte, den lade till random siffror mellan filnamnet och .svg (?) <img
+        v-if="cardData.vendor"
+        :src="`../assets/vendor-${cardData.vendor
+          .split(' ')
+          .join('')
+          .toLowerCase()}.svg`"
+        alt="Vendor Logo"
+      /> -->
+
+      <!-- <img
+        v-if="cardData.vendor === 'Ninja Bank'"
+        src="../assets/vendor-ninjabank.svg"
+        alt="Ninja Bank logo"
+      /> -->
+      <!-- <img v-if="cardData.vendor === 'Ninja Bank'" src="../assets/vendor-ninja.svg" alt="Ninja Bank logo">
+      <img v-else-if="cardData.vendor === 'Bitcoin Inc'" src="../assets/vendor-bitcoin.svg" alt="Bitcoin Inc logo">
+      <img v-else-if="cardData.vendor === 'Blockchain Inc'" src="../assets/vendor-blockchain" alt="Blockchain Inc logo"> -->
     </header>
-    <section class="number">{{ formData.cardNumber }}</section>
+    <section class="number">
+      {{ addSpacesToCardNum() }}
+    </section>
     <section class="info">
       <aside class="holder">
         <span>Cardholder Name</span>
-        <p>{{ formData.cardName }}</p>
+        <p>{{ cardData.cardName }}</p>
       </aside>
       <aside class="valid">
         <span>Valid until</span>
-        <p v-if="!formData.month && !formData.year">MM/YY</p>
-        <p v-else-if="formData.month && !formData.year">
-          {{ formData.month }}/YY
+        <p v-if="!cardData.month && !cardData.year">MM/YY</p>
+        <p v-else-if="cardData.month && !cardData.year">
+          {{ cardData.month }}/YY
         </p>
-        <p v-else-if="!formData.month && formData.year">
-          MM/{{ formData.year }}
+        <p v-else-if="!cardData.month && cardData.year">
+          MM/{{ cardData.year }}
         </p>
-        <p v-else>{{ formData.month }}/{{ formData.year }}</p>
+        <p v-else>{{ cardData.month }}/{{ cardData.year }}</p>
       </aside>
     </section>
   </article>
@@ -40,7 +64,17 @@
 <script>
 export default {
   props: {
-    formData: Object,
+    cardData: Object,
+  },
+  methods: {
+    addSpacesToCardNum() {
+      if (this.cardData.cardNumber.length > 0) {
+        const newCardNumber = this.cardData.cardNumber
+          .match(/.{1,4}/g)
+          .join(" ");
+        return newCardNumber;
+      }
+    },
   },
 };
 </script>
@@ -49,6 +83,7 @@ export default {
 aside {
   display: block;
 }
+
 .card {
   max-width: 24rem;
   height: 14rem;
@@ -96,6 +131,25 @@ aside {
 .holder {
   -webkit-box-flex: 1;
   flex: 1;
+}
+
+.card section aside span {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 0 0 0.25rem;
+}
+
+.card section aside p {
+  display: block;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+.card section aside.valid span,
+.card section aside.valid p {
+  text-align: right;
 }
 
 .blank {
