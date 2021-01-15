@@ -29,14 +29,26 @@
         alt="Vendor Logo"
       /> -->
 
-      <!-- <img
+      <img
         v-if="cardData.vendor === 'Ninja Bank'"
         src="../assets/vendor-ninjabank.svg"
         alt="Ninja Bank logo"
-      /> -->
-      <!-- <img v-if="cardData.vendor === 'Ninja Bank'" src="../assets/vendor-ninja.svg" alt="Ninja Bank logo">
-      <img v-else-if="cardData.vendor === 'Bitcoin Inc'" src="../assets/vendor-bitcoin.svg" alt="Bitcoin Inc logo">
-      <img v-else-if="cardData.vendor === 'Blockchain Inc'" src="../assets/vendor-blockchain" alt="Blockchain Inc logo"> -->
+      />
+      <img
+        v-else-if="cardData.vendor === 'Bitcoin Inc'"
+        src="../assets/vendor-bitcoininc.svg"
+        alt="Bitcoin Inc logo"
+      />
+      <img
+        v-else-if="cardData.vendor === 'Blockchain Inc'"
+        src="../assets/vendor-blockchaininc.svg"
+        alt="Blockchain Inc logo"
+      />
+      <img
+        v-else-if="cardData.vendor === 'Evil Corp'"
+        src="../assets/vendor-evilcorp.svg"
+        alt="Blockchain Inc logo"
+      />
     </header>
     <section class="number">
       {{ addSpacesToCardNum() }}
@@ -150,6 +162,38 @@ aside {
 .card section aside.valid span,
 .card section aside.valid p {
   text-align: right;
+}
+
+.ninja {
+  background: linear-gradient(
+      248.3deg,
+      hsla(0, 0%, 100%, 0.15),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #222;
+  color: #fff;
+}
+
+.evil {
+  background: linear-gradient(248.3deg, rgba(0, 0, 0, 0.16), transparent),
+    #f33355;
+  color: #fff;
+}
+
+.blockchain {
+  background: linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, transparent),
+    #8b58f9;
+  color: #fff;
+}
+
+.bitcoin {
+  background: linear-gradient(
+      0.689turn,
+      hsla(0, 0%, 100%, 0.15),
+      hsla(0, 0%, 100%, 0) 99.07%
+    ),
+    #ffae34;
+  color: #222;
 }
 
 .blank {

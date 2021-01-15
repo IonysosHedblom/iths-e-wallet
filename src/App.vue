@@ -15,6 +15,7 @@
   height: 100vh;
   margin: 0 auto;
   padding: 1rem;
-  font-family: "PT Mono", monospace;
+  font-family: PT Mono, monospace;
+  box-sizing: border-box;
 }
 </style>

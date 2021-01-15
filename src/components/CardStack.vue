@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <h1>This will be a stack of cards</h1>
-  </div>
+  <section class="card-stack">
+    <!-- <Card /> -->
+  </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data: function () {
+    return {
+      cards: this.$root.cards,
+    };
+  },
+};
 </script>
 
-<style>
+<style scoped>
 </style>
