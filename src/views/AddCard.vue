@@ -1,5 +1,6 @@
 <template>
   <main>
+    <Card v-bind:formData="formData" />
     <section class="card-form">
       <label class="col-2" for="card-number">CARD NUMBER</label>
       <input
@@ -55,7 +56,11 @@
 </template>
 
 <script>
+import Card from "../components/Card";
 export default {
+  components: {
+    Card,
+  },
   data: function () {
     return {
       formData: {
