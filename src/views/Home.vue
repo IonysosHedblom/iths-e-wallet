@@ -2,10 +2,6 @@
   <main>
     <Top header="e-wallet" subheader="active card" />
     <Card v-if="cards[active]" v-bind:cardData="cards[active]" />
-    <aside class="confirmation-modal" v-if="confirmModal">
-      <h2>Are you sure? This can't be undone.</h2>
-    </aside>
-
     <CardStack
       v-bind:isActive="active"
       v-bind:setActive="setNewActiveCard"
