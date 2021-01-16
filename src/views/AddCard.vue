@@ -4,6 +4,7 @@
     <Card v-bind:cardData="formData" />
     <CardForm v-bind:cardData="formData" />
     <a @click.prevent="addCard" href="#" class="btn">Add card</a>
+    <!-- <a @click.prevent="addCard" href="#" class="btn">Go Back</a> -->
   </main>
 </template>
 

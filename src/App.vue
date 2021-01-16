@@ -10,9 +10,7 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
-body {
-  margin: 0;
-}
+
 #app {
   max-width: 24rem;
   height: 100vh;

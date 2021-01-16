@@ -8,12 +8,13 @@ new Vue({
   data: {
     cards: [
       {
+        // ID används inte till något, låter det vara kvar ändå.
         id: 1610801447119,
         cardNumber: "1337133713371337",
         cardName: "Ionysos Hedblom",
         month: "03",
         year: "21",
-        vendor: "Evil Corp",
+        vendor: "Ninja Bank",
       },
       {
         id: 1610801447120,
@@ -37,7 +38,7 @@ new Vue({
         cardName: "Ionysos Hedblom",
         month: "12",
         year: "25",
-        vendor: "Ninja Bank",
+        vendor: "Evil Corp",
       },
 
     ]
