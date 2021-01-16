@@ -42,21 +42,3 @@ export default {
 </script>
 
 
-<style scoped>
-.btn {
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  align-items: center;
-  height: 4rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-decoration: none;
-  color: #000;
-  border: 0.125rem solid #000;
-  box-sizing: border-box;
-  margin: 2rem 0;
-  border-radius: 0.5rem;
-}
-</style>
