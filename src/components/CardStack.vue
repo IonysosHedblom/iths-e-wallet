@@ -1,6 +1,6 @@
 <template>
   <section class="card-stack">
-    <!-- <Card /> -->
+    <Card v-for="(card, cardIdx) in cards" v-bind:key="cardIdx" />
   </section>
 </template>
 
