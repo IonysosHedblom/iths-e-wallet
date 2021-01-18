@@ -10,6 +10,7 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 #app {
   max-width: 24rem;
