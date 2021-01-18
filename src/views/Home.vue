@@ -2,7 +2,8 @@
   <main>
     <Top header="e-wallet" subheader="active card" />
     <Card v-if="cards[active]" v-bind:cardData="cards[active]" />
-    <a href="#" class="btn delete">Remove card</a>
+    <a @click="modalOpen = true" href="#" class="btn delete">Remove card</a>
+    <Confirm v-if="modalOpen" />
     <CardStack
       v-bind:isActive="active"
       v-bind:setActive="setNewActiveCard"
@@ -17,6 +18,7 @@
 import Top from "../components/Top";
 import Card from "../components/Card";
 import CardStack from "../components/CardStack";
+import Confirm from "../components/Confirm";
 
 export default {
   name: "Home",
@@ -24,11 +26,13 @@ export default {
     Top,
     Card,
     CardStack,
+    Confirm,
   },
   data: function () {
     return {
       cards: this.$root.cards,
       active: 0,
+      modalOpen: false,
     };
   },
   methods: {
