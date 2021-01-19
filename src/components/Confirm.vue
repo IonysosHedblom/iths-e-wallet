@@ -3,14 +3,26 @@
     <h3>Are you sure?</h3>
     <div class="buttons">
       <a @click="closeModal" href="#" class="btn cancel">Cancel</a>
-      <a href="#" class="btn confirm">Confirm</a>
+      <a @click="deleteCard" href="#" class="btn confirm">Confirm</a>
     </div>
   </aside>
 </template>
 
 <script>
 export default {
-  props: ["closeModal"],
+  props: {
+    closeModal: Function,
+    active: Number,
+    setActive: Function,
+  },
+  methods: {
+    deleteCard() {
+      this.$root.cards.splice(this.active, 1);
+      // Måste alltid finnas ett active kort
+      this.setActive(0);
+      this.closeModal();
+    },
+  },
 };
 </script>
 

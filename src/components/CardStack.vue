@@ -15,8 +15,10 @@ export default {
   components: {
     Card,
   },
-
-  props: ["cards", "setActive"],
+  props: {
+    cards: Array,
+    setActive: Function,
+  },
 };
 </script>
 

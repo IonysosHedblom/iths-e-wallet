@@ -7,8 +7,11 @@
 
 <script>
 export default {
-  props: ["header", "subheader"],
   name: "Top",
+  props: {
+    header: String,
+    subheader: String,
+  },
 };
 </script>
 

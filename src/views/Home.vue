@@ -2,10 +2,20 @@
   <main>
     <Top header="e-wallet" subheader="active card" />
     <Card v-if="cards[active]" v-bind:cardData="cards[active]" />
-    <a v-if="!modalOpen" @click="modalOpen = true" href="#" class="btn delete"
+    <a
+      v-if="!modalOpen && cards.length !== 0"
+      @click="modalOpen = true"
+      href="#"
+      class="btn delete"
       >Remove card</a
     >
-    <Confirm v-if="modalOpen" v-bind:closeModal="closeModal" />
+    <Confirm
+      v-if="modalOpen"
+      v-bind:closeModal="closeModal"
+      v-bind:setActive="setNewActiveCard"
+      v-bind:cards="cards"
+      v-bind:active="active"
+    />
     <CardStack
       v-bind:isActive="active"
       v-bind:setActive="setNewActiveCard"
@@ -32,10 +42,14 @@ export default {
   },
   data: function () {
     return {
-      cards: this.$root.cards,
       active: 0,
       modalOpen: false,
     };
+  },
+  computed: {
+    cards() {
+      return this.$root.cards;
+    },
   },
   methods: {
     changeRoute() {
@@ -63,6 +77,7 @@ export default {
   margin: 7px auto 0 auto;
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
   text-shadow: none;
+  border-radius: 0.25rem;
 }
 
 .delete:hover {
